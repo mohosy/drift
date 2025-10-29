@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drift</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <p class="eyebrow">ML Monitoring Studio</p>
+        <h1>Drift</h1>
+        <p class="desc">Track feature distribution shift with PSI and JS divergence across streaming windows.</p>
+
+        <div class="card">
+          <h2>Data Shift</h2>
+          <label>Sample Size
+            <input id="sample" type="range" min="300" max="8000" step="100" value="2200" />
+            <span id="sampleVal">2200</span>
+          </label>
+          <label>Mean Shift
+            <input id="shift" type="range" min="-2" max="2" step="0.01" value="0.55" />
+            <span id="shiftVal">0.55</span>
+          </label>
+          <label>Variance Ratio
+            <input id="spread" type="range" min="0.4" max="2.2" step="0.01" value="1.25" />
+            <span id="spreadVal">1.25</span>
+          </label>
+          <div class="row">
+            <button id="analyze">Analyze Window</button>
+            <button id="stream">Stream 20 Windows</button>
+          </div>
+        </div>
+
+        <div class="card metrics">
+          <h2>Drift Metrics</h2>
+          <p>PSI: <strong id="psi">0.000</strong></p>
+          <p>JS Divergence: <strong id="js">0.000</strong></p>
+          <p>Alert Level: <strong id="alert">Stable</strong></p>
+          <p>Windows > Threshold: <strong id="count">0</strong></p>
+        </div>
+      </section>
+
+      <section class="viz">
+        <article class="card">
+          <h2>Distribution Overlay</h2>
+          <canvas id="hist" width="1080" height="320"></canvas>
+        </article>
+        <article class="card">
+          <h2>PSI Trend</h2>
+          <canvas id="trend" width="1080" height="230"></canvas>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
